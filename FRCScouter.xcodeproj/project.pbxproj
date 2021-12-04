@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		323C180C275AF63B00C65409 /* TeamsResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323C180B275AF63B00C65409 /* TeamsResponseModel.swift */; };
 		32A6E0D027553F21000D9A6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A6E0CF27553F21000D9A6A /* AppDelegate.swift */; };
 		32A6E0D227553F21000D9A6A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A6E0D127553F21000D9A6A /* SceneDelegate.swift */; };
 		32A6E0D427553F21000D9A6A /* TeamsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A6E0D327553F21000D9A6A /* TeamsController.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		323C180B275AF63B00C65409 /* TeamsResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsResponseModel.swift; sourceTree = "<group>"; };
 		32A6E0CC27553F21000D9A6A /* FRCScouter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FRCScouter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32A6E0CF27553F21000D9A6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32A6E0D127553F21000D9A6A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,7 +66,7 @@
 				32A6E0D127553F21000D9A6A /* SceneDelegate.swift */,
 				32A6E0E727553F87000D9A6A /* Controller */,
 				32A6E0E627553F74000D9A6A /* View */,
-				32A6E0EA275555E3000D9A6A /* Mode */,
+				32A6E0EA275555E3000D9A6A /* Model */,
 				32A6E0DB27553F22000D9A6A /* Assets.xcassets */,
 				32A6E0DD27553F22000D9A6A /* LaunchScreen.storyboard */,
 				32A6E0E027553F22000D9A6A /* Info.plist */,
@@ -90,11 +92,12 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		32A6E0EA275555E3000D9A6A /* Mode */ = {
+		32A6E0EA275555E3000D9A6A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				323C180B275AF63B00C65409 /* TeamsResponseModel.swift */,
 			);
-			path = Mode;
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,6 +171,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				323C180C275AF63B00C65409 /* TeamsResponseModel.swift in Sources */,
 				32A6E0D427553F21000D9A6A /* TeamsController.swift in Sources */,
 				32A6E0D027553F21000D9A6A /* AppDelegate.swift in Sources */,
 				32A6E0DA27553F21000D9A6A /* FRCScouter.xcdatamodeld in Sources */,
