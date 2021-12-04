@@ -10,12 +10,13 @@
 		323C180C275AF63B00C65409 /* TeamsResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323C180B275AF63B00C65409 /* TeamsResponseModel.swift */; };
 		32A6E0D027553F21000D9A6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A6E0CF27553F21000D9A6A /* AppDelegate.swift */; };
 		32A6E0D227553F21000D9A6A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A6E0D127553F21000D9A6A /* SceneDelegate.swift */; };
-		32A6E0D427553F21000D9A6A /* TeamsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A6E0D327553F21000D9A6A /* TeamsController.swift */; };
+		32A6E0D427553F21000D9A6A /* TeamsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A6E0D327553F21000D9A6A /* TeamsViewController.swift */; };
 		32A6E0D727553F21000D9A6A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32A6E0D527553F21000D9A6A /* Main.storyboard */; };
 		32A6E0DA27553F21000D9A6A /* FRCScouter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 32A6E0D827553F21000D9A6A /* FRCScouter.xcdatamodeld */; };
 		32A6E0DC27553F22000D9A6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32A6E0DB27553F22000D9A6A /* Assets.xcassets */; };
 		32A6E0DF27553F22000D9A6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32A6E0DD27553F22000D9A6A /* LaunchScreen.storyboard */; };
 		32A6E0E9275555DD000D9A6A /* TemplatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A6E0E8275555DD000D9A6A /* TemplatesViewController.swift */; };
+		32DBDACF275BD7EA00BD2A0A /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBDACE275BD7EA00BD2A0A /* CustomTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,13 +24,14 @@
 		32A6E0CC27553F21000D9A6A /* FRCScouter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FRCScouter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32A6E0CF27553F21000D9A6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32A6E0D127553F21000D9A6A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		32A6E0D327553F21000D9A6A /* TeamsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsController.swift; sourceTree = "<group>"; };
+		32A6E0D327553F21000D9A6A /* TeamsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsViewController.swift; sourceTree = "<group>"; };
 		32A6E0D627553F21000D9A6A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		32A6E0D927553F21000D9A6A /* FRCScotter.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FRCScotter.xcdatamodel; sourceTree = "<group>"; };
 		32A6E0DB27553F22000D9A6A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		32A6E0DE27553F22000D9A6A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		32A6E0E027553F22000D9A6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32A6E0E8275555DD000D9A6A /* TemplatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplatesViewController.swift; sourceTree = "<group>"; };
+		32DBDACE275BD7EA00BD2A0A /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,7 +88,8 @@
 		32A6E0E727553F87000D9A6A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				32A6E0D327553F21000D9A6A /* TeamsController.swift */,
+				32DBDACE275BD7EA00BD2A0A /* CustomTableViewCell.swift */,
+				32A6E0D327553F21000D9A6A /* TeamsViewController.swift */,
 				32A6E0E8275555DD000D9A6A /* TemplatesViewController.swift */,
 			);
 			path = Controller;
@@ -172,8 +175,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				323C180C275AF63B00C65409 /* TeamsResponseModel.swift in Sources */,
-				32A6E0D427553F21000D9A6A /* TeamsController.swift in Sources */,
+				32A6E0D427553F21000D9A6A /* TeamsViewController.swift in Sources */,
 				32A6E0D027553F21000D9A6A /* AppDelegate.swift in Sources */,
+				32DBDACF275BD7EA00BD2A0A /* CustomTableViewCell.swift in Sources */,
 				32A6E0DA27553F21000D9A6A /* FRCScouter.xcdatamodeld in Sources */,
 				32A6E0D227553F21000D9A6A /* SceneDelegate.swift in Sources */,
 				32A6E0E9275555DD000D9A6A /* TemplatesViewController.swift in Sources */,
