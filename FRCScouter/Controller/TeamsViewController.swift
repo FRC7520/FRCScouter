@@ -88,7 +88,6 @@ class TeamsViewController: UITableViewController {
     
     //Press on floating button
     @objc func fabTapped(_ button: UIButton) {
-        print("button tapped")
         var team_number: String = ""
         
         var textField = UITextField()
