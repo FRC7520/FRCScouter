@@ -11,6 +11,9 @@ class CustomTableViewCell: UITableViewCell {
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var lblTeamNo: UILabel!
     @IBOutlet weak var lblTeamName: UILabel!
+    @IBOutlet weak var addPress: UIButton!
+   
+    @IBOutlet weak var delPressed: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

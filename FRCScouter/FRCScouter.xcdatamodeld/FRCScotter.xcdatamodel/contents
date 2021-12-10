@@ -1,11 +1,33 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19461" systemVersion="21A559" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Teams" representedClassName=".Teams" syncable="YES" codeGenerationType="class">
+        <attribute name="address" optional="YES" attributeType="String"/>
+        <attribute name="city" optional="YES" attributeType="String"/>
+        <attribute name="country" optional="YES" attributeType="String"/>
+        <attribute name="gmaps_place_id" optional="YES" attributeType="String"/>
+        <attribute name="gmaps_url" optional="YES" attributeType="String"/>
+        <attribute name="key" optional="YES" attributeType="String"/>
+        <attribute name="lat" optional="YES" attributeType="String"/>
+        <attribute name="lng" optional="YES" attributeType="String"/>
+        <attribute name="location_name" optional="YES" attributeType="String"/>
+        <attribute name="mediaUrl" optional="YES" attributeType="String"/>
+        <attribute name="motto" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="nickname" attributeType="String"/>
         <attribute name="photo" optional="YES" attributeType="Binary"/>
-        <attribute name="team_name" attributeType="String"/>
+        <attribute name="postal_code" optional="YES" attributeType="String"/>
+        <attribute name="rookie_year" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="school_name" optional="YES" attributeType="String"/>
+        <attribute name="state_prov" optional="YES" attributeType="String"/>
         <attribute name="team_no" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="website" optional="YES" attributeType="String"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="team_no"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <elements>
-        <element name="Teams" positionX="-63" positionY="-18" width="128" height="74"/>
+        <element name="Teams" positionX="-63" positionY="-18" width="128" height="329"/>
     </elements>
 </model>

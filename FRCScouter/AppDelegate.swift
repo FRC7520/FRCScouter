@@ -16,7 +16,7 @@ import CoreData
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    var window: UIWindow? //add by LI Mo on Dec 10,2021
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -58,7 +58,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          application to it. This property is optional since there are legitimate
          error conditions that could cause the creation of the store to fail.
         */
-        let container = NSPersistentContainer(name: "FRCScouter")
+        /**Start**/
+         // test it at ipad mini2 by Dec 10,2021
+         let modelName = "FRCScouter"
+
+         var container: NSPersistentContainer!
+
+        
+             var modelURL = Bundle(for: type(of: self)).url(forResource: modelName, withExtension: "momd")!
+             let versionInfoURL = modelURL.appendingPathComponent("VersionInfo.plist")
+             if let versionInfoNSDictionary = NSDictionary(contentsOf: versionInfoURL),
+                 let version = versionInfoNSDictionary.object(forKey: "NSManagedObjectModel_CurrentVersionName") as? String {
+                 modelURL.appendPathComponent("\(version).mom")
+                 let managedObjectModel = NSManagedObjectModel(contentsOf: modelURL)
+                 container = NSPersistentContainer(name: modelName, managedObjectModel: managedObjectModel!)
+             } else {
+                 //fall back solution; runs fine despite "Failed to load optimized model" warning
+                 container = NSPersistentContainer(name: modelName)
+             }
+         
+         /* end */
+      
+       // let container = NSPersistentContainer(name: "FRCScouter")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.

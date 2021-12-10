@@ -33,6 +33,8 @@ class TeamsViewController: UITableViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "CustomTableViewCell")
+        
         // set navigationBar's title color
         let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
@@ -92,20 +94,47 @@ class TeamsViewController: UITableViewController {
         var textField = UITextField()
         let alert = UIAlertController(title: "Add Teams", message: "", preferredStyle: .alert)
         let action = UIAlertAction(title: "Add", style: .default) { (action) in
-            //what will happen once the user clicks the Add button on our UIAlert
             if let s = textField.text {
                team_number = s
+                let newTeams = Teams(context: self.context)
                 //self.getJasonDataFromTBA()
                 self.getJasonDataFromTBA(teamField: "team", teamName: team_number) { result in
                     guard let teamsItemModel = result else { return }
-               //print("Team Number = \(String(describing: teamsItemModel.team_number))")
-               //print("School Name = \(String(describing: teamsItemModel.school_name))")
-                    let newTeams = Teams(context: self.context)
+                    
                     newTeams.team_no = Int64(teamsItemModel.team_number!)
-                    newTeams.team_name = teamsItemModel.school_name
-                    self.arrTeams.append(newTeams)
-                    self.saveTeams()
+                    newTeams.nickname = teamsItemModel.nickname
+                    newTeams.address = teamsItemModel.address
+                    newTeams.city = teamsItemModel.city
+                    newTeams.country = teamsItemModel.country
+                    newTeams.gmaps_place_id = teamsItemModel.gmaps_place_id
+                    newTeams.gmaps_url = teamsItemModel.gmaps_url
+                    newTeams.key = teamsItemModel.key
+                    newTeams.lat = teamsItemModel.lat
+                    newTeams.lng = teamsItemModel.lng
+                    newTeams.location_name = teamsItemModel.location_name
+                    newTeams.motto = teamsItemModel.motto
+                    newTeams.name = teamsItemModel.name
+                    newTeams.postal_code = teamsItemModel.postal_code
+                    newTeams.rookie_year = teamsItemModel.rookie_year!
+                    newTeams.school_name = teamsItemModel.school_name
+                    newTeams.state_prov = teamsItemModel.state_prov
+                    newTeams.website = teamsItemModel.website
+                    self.getJasonDataOfMediaUrlFromTBA(teamField: "team", teamName: team_number, mediaField: "media", year: "2019"){ result in
+                        guard let mediaList = result else { return }
+                        if (mediaList.count>0) {
+                            newTeams.mediaUrl = mediaList[0].direct_url
+                            //self.arrTeams.append(newTeams)
+                            
+                        }
+                        self.saveTeams()
+                        self.loadTeams()
+                    }
+                    
                 }
+                
+                
+
+                
             }
         }
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
@@ -149,6 +178,36 @@ class TeamsViewController: UITableViewController {
  
     }
     
+    func getJasonDataOfMediaUrlFromTBA(teamField: String, teamName: String, mediaField: String, year: String,  completion: @escaping ([MediaList]?) -> Void){
+        // Create URL
+        let s = "https://www.thebluealliance.com/api/v3/" + teamField + "/frc" + teamName + "/" + mediaField + "/" + year
+        let url = URL(string: s)
+        guard let requestUrl = url else { fatalError() }
+        // Create URL Request
+        var request = URLRequest(url: requestUrl)
+        // Specify HTTP Method to use
+        request.httpMethod = "GET"
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue("XTaqp0VqsYCDQbYetQWxJfQ9DMjeHItHlBdkQ4UZ5iXCwZkXnETz5NysIAC4gZhi", forHTTPHeaderField: "X-TBA-Auth-Key")
+        // Send HTTP Request
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            
+            // Check if Error took place
+            guard let data = data else {
+                completion(nil)
+                return
+                
+            }
+                
+                   // Using parseJSON() function to convert data to Swift struct
+            let teamsItem = self.parseJSONofMediaList(data: data)
+                completion(teamsItem)
+                   
+        }
+        task.resume()
+ 
+    }
+    
     //convert Data into TeamsResponseModel struct
     func parseJSON(data: Data) -> TeamsResponseModel? {
         
@@ -156,7 +215,22 @@ class TeamsViewController: UITableViewController {
         do {
             returnValue = try JSONDecoder().decode(TeamsResponseModel.self, from: data)
         } catch {
-            print("Error took place\(error.localizedDescription).")
+            //print("Error took place\(error.localizedDescription).")
+            print(String(describing: error))
+        }
+        
+        return returnValue
+    }
+    
+    //convert Data into MediaList struct
+    func parseJSONofMediaList(data: Data) -> [MediaList]? {
+        
+        var returnValue: [MediaList]?
+        do {
+            returnValue = try JSONDecoder().decode([MediaList].self, from: data)
+        } catch {
+            //print("Error took place\(error.localizedDescription).")
+            print(String(describing: error))
         }
         
         return returnValue
@@ -165,26 +239,31 @@ class TeamsViewController: UITableViewController {
     //MARK: - Data Manipulation Methods
     
     func saveTeams(){
+        
         do {
+            context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
             try context.save()
+            
+            
         } catch {
             print("Error saving context \(error)")
         }
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
     }
+    
+    
     
     func loadTeams() {
         let request: NSFetchRequest<Teams> = Teams.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(key: "team_no", ascending: true)]
         do {
             arrTeams = try context.fetch(request)
         } catch {
             print("Error fetching data from context \(error)")
         }
         
-        tableView.reloadData()
-        
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
     //MARK: - TableView dataSource
@@ -194,12 +273,68 @@ class TeamsViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "teamsCell", for: indexPath) as! CustomTableViewCell
-        cell.lblTeamNo.text = String(arrTeams[indexPath.row].team_no)
-        cell.lblTeamName?.text = arrTeams[indexPath.row].team_name
         
+        //show image logo
+        let mediaUrl: String = arrTeams[indexPath.row].mediaUrl ?? ""
+        if mediaUrl != "" {
+            let url = URL(string: mediaUrl)
+            DispatchQueue.global().async {
+                let data = try? Data(contentsOf: url!)
+                DispatchQueue.main.async {
+                    cell.imgView.image = UIImage(data: data!)
+                    cell.imgView.layer.cornerRadius = 38
+                    cell.imgView.layer.masksToBounds = true
+                    cell.imgView.layer.borderColor = UIColor.lightGray.cgColor
+                    cell.imgView.layer.borderWidth = 2
+                    cell.imgView.contentMode = .scaleToFill
+                }
+            }
+        } else {
+            let img = UIImage(named: "placeholder-img")
+            cell.imgView.image = img
+            cell.imgView.layer.cornerRadius = 38
+            cell.imgView.layer.masksToBounds = true
+            cell.imgView.layer.borderColor = UIColor.lightGray.cgColor
+            cell.imgView.layer.borderWidth = 2
+            cell.imgView.contentMode = .scaleToFill
+        }
+        cell.lblTeamNo.text = String(arrTeams[indexPath.row].team_no)
+        cell.lblTeamName?.text = arrTeams[indexPath.row].nickname
+        cell.lblTeamName.widthAnchor.constraint(equalToConstant: 250.0).isActive = true
+        //cell.lblTeamName.translatesAutoresizingMaskIntoConstraints = false
+        cell.addPress.titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 46)
+        cell.delPressed.titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 30)
+        cell.delPressed.tag = indexPath.row
+        cell.delPressed.addTarget(self, action: #selector(deleteTeam), for: .touchUpInside)
+        cell.addPress.tag = indexPath.row
+        cell.addPress.addTarget(self, action:#selector(addTeamDetail), for: .touchUpInside)
         return cell
     }
     
+    @objc func deleteTeam(sender: UIButton){
+        let nickname = arrTeams[sender.tag].nickname ?? ""
+        let alert = UIAlertController(title: "Delete Teams", message: "Are you sure to delete team: \(nickname)", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Delete", style: .default) { (action) in
+            self.context.delete(self.arrTeams[sender.tag])
+            self.arrTeams.remove(at: sender.tag)
+            self.saveTeams()
+            self.loadTeams()
+        }
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    @objc func addTeamDetail(sender: UIButton){
+        
+        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let VC = storyBoard.instantiateViewController(withIdentifier: "SubMain") as! TeamDetailViewController
+        VC.selectedTeam = arrTeams[sender.tag]
+        navigationController?.pushViewController(VC, animated: true)
+         
+        //self.performSegue(withIdentifier: "goTeamDetail", sender: nil)
+         
+    }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 96.0
     }

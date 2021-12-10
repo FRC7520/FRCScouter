@@ -16,6 +16,7 @@
 		32A6E0DC27553F22000D9A6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32A6E0DB27553F22000D9A6A /* Assets.xcassets */; };
 		32A6E0DF27553F22000D9A6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32A6E0DD27553F22000D9A6A /* LaunchScreen.storyboard */; };
 		32A6E0E9275555DD000D9A6A /* TemplatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A6E0E8275555DD000D9A6A /* TemplatesViewController.swift */; };
+		32B99B59275E69820070BADC /* TeamDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B99B58275E69820070BADC /* TeamDetailViewController.swift */; };
 		32DBDACF275BD7EA00BD2A0A /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBDACE275BD7EA00BD2A0A /* CustomTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +32,7 @@
 		32A6E0DE27553F22000D9A6A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		32A6E0E027553F22000D9A6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32A6E0E8275555DD000D9A6A /* TemplatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplatesViewController.swift; sourceTree = "<group>"; };
+		32B99B58275E69820070BADC /* TeamDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailViewController.swift; sourceTree = "<group>"; };
 		32DBDACE275BD7EA00BD2A0A /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -91,6 +93,7 @@
 				32DBDACE275BD7EA00BD2A0A /* CustomTableViewCell.swift */,
 				32A6E0D327553F21000D9A6A /* TeamsViewController.swift */,
 				32A6E0E8275555DD000D9A6A /* TemplatesViewController.swift */,
+				32B99B58275E69820070BADC /* TeamDetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -176,6 +179,7 @@
 			files = (
 				323C180C275AF63B00C65409 /* TeamsResponseModel.swift in Sources */,
 				32A6E0D427553F21000D9A6A /* TeamsViewController.swift in Sources */,
+				32B99B59275E69820070BADC /* TeamDetailViewController.swift in Sources */,
 				32A6E0D027553F21000D9A6A /* AppDelegate.swift in Sources */,
 				32DBDACF275BD7EA00BD2A0A /* CustomTableViewCell.swift in Sources */,
 				32A6E0DA27553F21000D9A6A /* FRCScouter.xcdatamodeld in Sources */,

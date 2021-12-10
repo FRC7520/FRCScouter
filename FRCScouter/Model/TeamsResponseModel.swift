@@ -13,7 +13,7 @@ struct TeamsResponseModel: Codable {
     let country: String?
     let gmaps_place_id: String?
     let gmaps_url: String?
-    let home_championship: String?
+   // let home_championship: [String: String]
     let key: String?
     let lat: String?
     let lng: String?
@@ -22,9 +22,19 @@ struct TeamsResponseModel: Codable {
     let name: String?
     let nickname: String?
     let postal_code: String?
-    let rookie_year: Int?
+    let rookie_year: Int64?
     let school_name: String?
     let state_prov: String?
     let team_number: Int?
     let website: String?
 }
+
+struct MediaList: Codable {
+    let type : String?
+    let fireign_key : String?
+    let preferred : Bool
+    let direct_url: String?
+    let view_url: String?
+}
+
+
