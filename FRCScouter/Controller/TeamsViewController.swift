@@ -7,12 +7,14 @@
 
 import UIKit
 import CoreData
+import SideMenu
 
 @available(iOS 13.0, *)
 
-class TeamsViewController: UITableViewController {
+class TeamsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    var menu: SideMenuNavigationController?
     
-    
+    @IBOutlet weak var tableView: UITableView!
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     var arrTeams = [Teams]()
@@ -33,6 +35,11 @@ class TeamsViewController: UITableViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        menu = SideMenuNavigationController(rootViewController: MenuListController())
+        menu?.leftSide = true
+        menu?.setNavigationBarHidden(true, animated: false)
+        SideMenuManager.default.leftMenuNavigationController = menu
+        SideMenuManager.default.addPanGestureToPresent(toView: self.view)
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "CustomTableViewCell")
         
         // set navigationBar's title color
@@ -49,8 +56,20 @@ class TeamsViewController: UITableViewController {
         loadTeams()
     }
     
+    @IBAction func didTapMenu() {
+        present(menu!, animated: true)
+    }
+    
     @objc func keyboardWillShow(sender: NSNotification) {
-         self.view.frame.origin.y = -200 // Move view 150 points upward
+        if let keyboardFrame: NSValue = sender.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as?NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            
+            self.view.frame.origin.y = -keyboardHeight
+        } else {
+            self.view.frame.origin.y = -200 // Move view 150 points upward
+        }
+        
     }
 
     @objc func keyboardWillHide(sender: NSNotification) {
@@ -120,11 +139,16 @@ class TeamsViewController: UITableViewController {
                     newTeams.website = teamsItemModel.website
                     self.getJasonDataOfMediaUrlFromTBA(teamField: "team", teamName: team_number, mediaField: "media", year: "2019"){ result in
                         guard let mediaList = result else { return }
-                        if (mediaList.count>0) {
-                            newTeams.mediaUrl = mediaList[0].direct_url
-                            //self.arrTeams.append(newTeams)
+                        
+                        for index in 0..<mediaList.count {
+                            let direct_url = mediaList[index].direct_url ?? ""
+                            if  !direct_url.isEmpty {
+                                newTeams.mediaUrl = direct_url
+                                break
+                            }
                             
                         }
+                        
                         self.saveTeams()
                         self.loadTeams()
                     }
@@ -266,36 +290,46 @@ class TeamsViewController: UITableViewController {
     }
     
     //MARK: - TableView dataSource
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arrTeams.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "teamsCell", for: indexPath) as! CustomTableViewCell
         
         //show image logo
         let mediaUrl: String = arrTeams[indexPath.row].mediaUrl ?? ""
         if mediaUrl != "" {
             let url = URL(string: mediaUrl)
-            DispatchQueue.global().async {
-                let data = try? Data(contentsOf: url!)
-                DispatchQueue.main.async {
-                    cell.imgView.image = UIImage(data: data!)
+            DispatchQueue.main.async {
+                if let data = try? Data(contentsOf: url!){
+                    cell.imgView.image = UIImage(data: data)
                     cell.imgView.layer.cornerRadius = 38
                     cell.imgView.layer.masksToBounds = true
                     cell.imgView.layer.borderColor = UIColor.lightGray.cgColor
                     cell.imgView.layer.borderWidth = 2
                     cell.imgView.contentMode = .scaleToFill
+                } else {
+                    let img = UIImage(named: "placeholder-img")
+                    cell.imgView.image = img
+                    cell.imgView.layer.cornerRadius = 38
+                    cell.imgView.layer.masksToBounds = true
+                    cell.imgView.layer.borderColor = UIColor.lightGray.cgColor
+                    cell.imgView.layer.borderWidth = 2
+                    cell.imgView.contentMode = .scaleToFill
+                    
                 }
             }
         } else {
-            let img = UIImage(named: "placeholder-img")
-            cell.imgView.image = img
-            cell.imgView.layer.cornerRadius = 38
-            cell.imgView.layer.masksToBounds = true
-            cell.imgView.layer.borderColor = UIColor.lightGray.cgColor
-            cell.imgView.layer.borderWidth = 2
-            cell.imgView.contentMode = .scaleToFill
+            DispatchQueue.main.async {
+                let img = UIImage(named: "placeholder-img")
+                cell.imgView.image = img
+                cell.imgView.layer.cornerRadius = 38
+                cell.imgView.layer.masksToBounds = true
+                cell.imgView.layer.borderColor = UIColor.lightGray.cgColor
+                cell.imgView.layer.borderWidth = 2
+                cell.imgView.contentMode = .scaleToFill
+            }
         }
         cell.lblTeamNo.text = String(arrTeams[indexPath.row].team_no)
         cell.lblTeamName?.text = arrTeams[indexPath.row].nickname
@@ -308,6 +342,12 @@ class TeamsViewController: UITableViewController {
         cell.addPress.tag = indexPath.row
         cell.addPress.addTarget(self, action:#selector(addTeamDetail), for: .touchUpInside)
         return cell
+    }
+    
+    func convertBase64StringToImage (imageBase64String:String) -> UIImage {
+        let imageData = Data.init(base64Encoded: imageBase64String, options: .init(rawValue: 0))
+        let image = UIImage(data: imageData!)
+        return image!
     }
     
     @objc func deleteTeam(sender: UIButton){
@@ -334,9 +374,47 @@ class TeamsViewController: UITableViewController {
         //self.performSegue(withIdentifier: "goTeamDetail", sender: nil)
          
     }
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 96.0
     }
 
 }
 
+
+//MARK: - Menu List
+
+@available(iOS 13.0, *)
+class MenuListController: UITableViewController {
+    var items = ["Export all teams", "Trash", "Support development", "Settings"]
+    let darkColor = UIColor(red: 33/255.0,
+                            green: 33/255.0,
+                            blue: 33/255.0,
+                            alpha: 1)
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.backgroundColor = darkColor
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return items.count
+    }
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = items[indexPath.row]
+        cell.textLabel?.textColor = .white
+        cell.backgroundColor = darkColor
+        return cell
+    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       // tableView.deselectRow(at: indexPath, animated: true)
+        if indexPath.row == 3 {
+            let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+            let VC = storyBoard.instantiateViewController(withIdentifier: "SettingVC") as! SettingViewController
+            navigationController?.pushViewController(VC, animated: true)
+        }
+    }
+}

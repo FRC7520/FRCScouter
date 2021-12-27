@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		323C180C275AF63B00C65409 /* TeamsResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323C180B275AF63B00C65409 /* TeamsResponseModel.swift */; };
+		32A3611B276CEFD900895F78 /* MatchScoutTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A36119276CEFD900895F78 /* MatchScoutTemplate.swift */; };
+		32A3611C276CEFD900895F78 /* MatchScoutTemplate.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32A3611A276CEFD900895F78 /* MatchScoutTemplate.xib */; };
 		32A6E0D027553F21000D9A6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A6E0CF27553F21000D9A6A /* AppDelegate.swift */; };
 		32A6E0D227553F21000D9A6A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A6E0D127553F21000D9A6A /* SceneDelegate.swift */; };
 		32A6E0D427553F21000D9A6A /* TeamsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A6E0D327553F21000D9A6A /* TeamsViewController.swift */; };
@@ -17,11 +19,15 @@
 		32A6E0DF27553F22000D9A6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32A6E0DD27553F22000D9A6A /* LaunchScreen.storyboard */; };
 		32A6E0E9275555DD000D9A6A /* TemplatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A6E0E8275555DD000D9A6A /* TemplatesViewController.swift */; };
 		32B99B59275E69820070BADC /* TeamDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B99B58275E69820070BADC /* TeamDetailViewController.swift */; };
+		32D3D4432774BD66001CC1D1 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D3D4422774BD66001CC1D1 /* SettingViewController.swift */; };
 		32DBDACF275BD7EA00BD2A0A /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32DBDACE275BD7EA00BD2A0A /* CustomTableViewCell.swift */; };
+		F0A5EB58C4607CE1E79191AC /* Pods_FRCScouter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ADE4AF845020574474FCF54 /* Pods_FRCScouter.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		323C180B275AF63B00C65409 /* TeamsResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsResponseModel.swift; sourceTree = "<group>"; };
+		32A36119276CEFD900895F78 /* MatchScoutTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchScoutTemplate.swift; sourceTree = "<group>"; };
+		32A3611A276CEFD900895F78 /* MatchScoutTemplate.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MatchScoutTemplate.xib; path = ../Controller/MatchScoutTemplate.xib; sourceTree = "<group>"; };
 		32A6E0CC27553F21000D9A6A /* FRCScouter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FRCScouter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32A6E0CF27553F21000D9A6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32A6E0D127553F21000D9A6A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -33,7 +39,11 @@
 		32A6E0E027553F22000D9A6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32A6E0E8275555DD000D9A6A /* TemplatesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplatesViewController.swift; sourceTree = "<group>"; };
 		32B99B58275E69820070BADC /* TeamDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailViewController.swift; sourceTree = "<group>"; };
+		32D3D4422774BD66001CC1D1 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		32DBDACE275BD7EA00BD2A0A /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		36272E9030BAD1B87A0656A3 /* Pods-FRCScouter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FRCScouter.debug.xcconfig"; path = "Target Support Files/Pods-FRCScouter/Pods-FRCScouter.debug.xcconfig"; sourceTree = "<group>"; };
+		4ADE4AF845020574474FCF54 /* Pods_FRCScouter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FRCScouter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B4F101C51494390FC3E9A85E /* Pods-FRCScouter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FRCScouter.release.xcconfig"; path = "Target Support Files/Pods-FRCScouter/Pods-FRCScouter.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0A5EB58C4607CE1E79191AC /* Pods_FRCScouter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,6 +63,8 @@
 			children = (
 				32A6E0CE27553F21000D9A6A /* FRCScouter */,
 				32A6E0CD27553F21000D9A6A /* Products */,
+				C73C28FC116FA4FFFDCAA539 /* Pods */,
+				B19E60EE92AA79CEEE5FAFD3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -82,6 +95,7 @@
 		32A6E0E627553F74000D9A6A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				32A3611A276CEFD900895F78 /* MatchScoutTemplate.xib */,
 				32A6E0D527553F21000D9A6A /* Main.storyboard */,
 			);
 			path = View;
@@ -94,6 +108,8 @@
 				32A6E0D327553F21000D9A6A /* TeamsViewController.swift */,
 				32A6E0E8275555DD000D9A6A /* TemplatesViewController.swift */,
 				32B99B58275E69820070BADC /* TeamDetailViewController.swift */,
+				32A36119276CEFD900895F78 /* MatchScoutTemplate.swift */,
+				32D3D4422774BD66001CC1D1 /* SettingViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -106,6 +122,23 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		B19E60EE92AA79CEEE5FAFD3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4ADE4AF845020574474FCF54 /* Pods_FRCScouter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C73C28FC116FA4FFFDCAA539 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				36272E9030BAD1B87A0656A3 /* Pods-FRCScouter.debug.xcconfig */,
+				B4F101C51494390FC3E9A85E /* Pods-FRCScouter.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -113,9 +146,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 32A6E0E327553F22000D9A6A /* Build configuration list for PBXNativeTarget "FRCScouter" */;
 			buildPhases = (
+				BAB2F04ED6365C2C22784F08 /* [CP] Check Pods Manifest.lock */,
 				32A6E0C827553F21000D9A6A /* Sources */,
 				32A6E0C927553F21000D9A6A /* Frameworks */,
 				32A6E0CA27553F21000D9A6A /* Resources */,
+				8FF4F8A4B0689C680E969E28 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -166,11 +201,54 @@
 			files = (
 				32A6E0DF27553F22000D9A6A /* LaunchScreen.storyboard in Resources */,
 				32A6E0DC27553F22000D9A6A /* Assets.xcassets in Resources */,
+				32A3611C276CEFD900895F78 /* MatchScoutTemplate.xib in Resources */,
 				32A6E0D727553F21000D9A6A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8FF4F8A4B0689C680E969E28 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FRCScouter/Pods-FRCScouter-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FRCScouter/Pods-FRCScouter-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FRCScouter/Pods-FRCScouter-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BAB2F04ED6365C2C22784F08 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FRCScouter-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		32A6E0C827553F21000D9A6A /* Sources */ = {
@@ -182,9 +260,11 @@
 				32B99B59275E69820070BADC /* TeamDetailViewController.swift in Sources */,
 				32A6E0D027553F21000D9A6A /* AppDelegate.swift in Sources */,
 				32DBDACF275BD7EA00BD2A0A /* CustomTableViewCell.swift in Sources */,
+				32D3D4432774BD66001CC1D1 /* SettingViewController.swift in Sources */,
 				32A6E0DA27553F21000D9A6A /* FRCScouter.xcdatamodeld in Sources */,
 				32A6E0D227553F21000D9A6A /* SceneDelegate.swift in Sources */,
 				32A6E0E9275555DD000D9A6A /* TemplatesViewController.swift in Sources */,
+				32A3611B276CEFD900895F78 /* MatchScoutTemplate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,11 +408,12 @@
 		};
 		32A6E0E427553F22000D9A6A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 36272E9030BAD1B87A0656A3 /* Pods-FRCScouter.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 1.0;
 				DEVELOPMENT_TEAM = GF3UB2SL2T;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FRCScouter/Info.plist;
@@ -347,7 +428,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ca.cyberworkshop.FRCScouter;
+				PRODUCT_BUNDLE_IDENTIFIER = ca.cyberworkshop.FRCScouter1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -357,11 +438,12 @@
 		};
 		32A6E0E527553F22000D9A6A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B4F101C51494390FC3E9A85E /* Pods-FRCScouter.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 1.0;
 				DEVELOPMENT_TEAM = GF3UB2SL2T;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FRCScouter/Info.plist;
@@ -376,7 +458,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ca.cyberworkshop.FRCScouter;
+				PRODUCT_BUNDLE_IDENTIFIER = ca.cyberworkshop.FRCScouter1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

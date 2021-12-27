@@ -22,8 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         //show coredata path
-        //let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        //print(urls[urls.count-1] as URL)
+        let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        print(urls[urls.count-1] as URL)
         
         // set NavigationBar's background color
         UINavigationBar.appearance().backgroundColor = .blue
@@ -117,4 +117,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
+
+
 

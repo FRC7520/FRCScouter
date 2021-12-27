@@ -8,6 +8,7 @@
 import UIKit
 
 class CustomTableViewCell: UITableViewCell {
+   // static let cellID = "customCell" //as it'll never be visible
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var lblTeamNo: UILabel!
     @IBOutlet weak var lblTeamName: UILabel!

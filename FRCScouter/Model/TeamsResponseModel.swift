@@ -32,9 +32,15 @@ struct TeamsResponseModel: Codable {
 struct MediaList: Codable {
     let type : String?
     let fireign_key : String?
+    let details : BASE64Image
     let preferred : Bool
     let direct_url: String?
     let view_url: String?
 }
 
+
+
+struct BASE64Image: Codable {
+    let base64Image: String?
+}
 

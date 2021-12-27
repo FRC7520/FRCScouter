@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19461" systemVersion="21A559" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="MatchScout" representedClassName=".MatchScout" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="scoutInfo" optional="YES" attributeType="String"/>
+    </entity>
     <entity name="Teams" representedClassName=".Teams" syncable="YES" codeGenerationType="class">
         <attribute name="address" optional="YES" attributeType="String"/>
         <attribute name="city" optional="YES" attributeType="String"/>
@@ -14,7 +18,7 @@
         <attribute name="motto" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="nickname" attributeType="String"/>
-        <attribute name="photo" optional="YES" attributeType="Binary"/>
+        <attribute name="photo" optional="YES" attributeType="String"/>
         <attribute name="postal_code" optional="YES" attributeType="String"/>
         <attribute name="rookie_year" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="school_name" optional="YES" attributeType="String"/>
@@ -28,6 +32,7 @@
         </uniquenessConstraints>
     </entity>
     <elements>
+        <element name="MatchScout" positionX="-63" positionY="135" width="128" height="59"/>
         <element name="Teams" positionX="-63" positionY="-18" width="128" height="329"/>
     </elements>
 </model>

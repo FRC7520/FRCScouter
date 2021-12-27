@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="ipad7_9" orientation="portrait" layout="fullscreen" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MatchScoutTemplate" customModule="FRCScouter" customModuleProvider="target">
+            <connections>
+                <outlet property="scoutInfoTextField" destination="24d-A3-pfR" id="Rpe-ex-c62"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="view1" destination="Flw-kz-Vc7" id="foo-ys-qkE"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="744" height="1133"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Flw-kz-Vc7">
+                    <rect key="frame" x="0.0" y="24" width="744" height="50"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cKy-y7-eot">
+                            <rect key="frame" x="10" y="5" width="45" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="45" id="Z08-B7-PLo"/>
+                            </constraints>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" image="menu"/>
+                        </button>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Scout Into" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="24d-A3-pfR" customClass="UnderLineTextField" customModule="UnderLineTextField">
+                            <rect key="frame" x="65" y="-2.5" width="669" height="55"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="cKy-y7-eot" secondAttribute="bottom" constant="5" id="55a-mu-vk0"/>
+                        <constraint firstItem="cKy-y7-eot" firstAttribute="leading" secondItem="Flw-kz-Vc7" secondAttribute="leading" constant="10" id="7bE-xu-fyO"/>
+                        <constraint firstItem="cKy-y7-eot" firstAttribute="centerY" secondItem="Flw-kz-Vc7" secondAttribute="centerY" id="Arp-H6-jOl"/>
+                        <constraint firstAttribute="height" constant="50" id="BuL-oP-AeS"/>
+                        <constraint firstAttribute="trailing" secondItem="24d-A3-pfR" secondAttribute="trailing" constant="10" id="agC-RQ-OsE"/>
+                        <constraint firstItem="24d-A3-pfR" firstAttribute="centerY" secondItem="Flw-kz-Vc7" secondAttribute="centerY" id="pUu-fS-R4U"/>
+                        <constraint firstItem="24d-A3-pfR" firstAttribute="leading" secondItem="cKy-y7-eot" secondAttribute="trailing" constant="10" id="zTL-u2-AoN"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="Flw-kz-Vc7" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="5GN-2Y-iyy"/>
+                <constraint firstItem="Flw-kz-Vc7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Iue-yu-lNn"/>
+                <constraint firstItem="Flw-kz-Vc7" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="dss-Ub-Ghf"/>
+            </constraints>
+            <point key="canvasLocation" x="131.8840579710145" y="86.383928571428569"/>
+        </view>
+    </objects>
+    <designables>
+        <designable name="24d-A3-pfR">
+            <size key="intrinsicContentSize" width="4" height="11.5"/>
+        </designable>
+    </designables>
+    <resources>
+        <image name="menu" width="56" height="56"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
