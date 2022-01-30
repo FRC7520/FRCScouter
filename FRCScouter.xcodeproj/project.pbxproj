@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		323C180C275AF63B00C65409 /* TeamsResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323C180B275AF63B00C65409 /* TeamsResponseModel.swift */; };
+		32613A6E277A81F500F4267F /* TJTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32613A6D277A81F500F4267F /* TJTextField.swift */; };
 		32A3611B276CEFD900895F78 /* MatchScoutTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A36119276CEFD900895F78 /* MatchScoutTemplate.swift */; };
 		32A3611C276CEFD900895F78 /* MatchScoutTemplate.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32A3611A276CEFD900895F78 /* MatchScoutTemplate.xib */; };
 		32A6E0D027553F21000D9A6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A6E0CF27553F21000D9A6A /* AppDelegate.swift */; };
@@ -26,6 +27,7 @@
 
 /* Begin PBXFileReference section */
 		323C180B275AF63B00C65409 /* TeamsResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsResponseModel.swift; sourceTree = "<group>"; };
+		32613A6D277A81F500F4267F /* TJTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TJTextField.swift; sourceTree = "<group>"; };
 		32A36119276CEFD900895F78 /* MatchScoutTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchScoutTemplate.swift; sourceTree = "<group>"; };
 		32A3611A276CEFD900895F78 /* MatchScoutTemplate.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MatchScoutTemplate.xib; path = ../Controller/MatchScoutTemplate.xib; sourceTree = "<group>"; };
 		32A6E0CC27553F21000D9A6A /* FRCScouter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FRCScouter.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,6 +112,7 @@
 				32B99B58275E69820070BADC /* TeamDetailViewController.swift */,
 				32A36119276CEFD900895F78 /* MatchScoutTemplate.swift */,
 				32D3D4422774BD66001CC1D1 /* SettingViewController.swift */,
+				32613A6D277A81F500F4267F /* TJTextField.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 				32A6E0D027553F21000D9A6A /* AppDelegate.swift in Sources */,
 				32DBDACF275BD7EA00BD2A0A /* CustomTableViewCell.swift in Sources */,
 				32D3D4432774BD66001CC1D1 /* SettingViewController.swift in Sources */,
+				32613A6E277A81F500F4267F /* TJTextField.swift in Sources */,
 				32A6E0DA27553F21000D9A6A /* FRCScouter.xcdatamodeld in Sources */,
 				32A6E0D227553F21000D9A6A /* SceneDelegate.swift in Sources */,
 				32A6E0E9275555DD000D9A6A /* TemplatesViewController.swift in Sources */,

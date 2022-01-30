@@ -163,6 +163,20 @@ class TemplatesViewController: UIViewController {
             let date = Date()
             newMatchScout.setValue(date.format(), forKey: "date")
             
+            let type = 1
+            newMatchScout.setValue(type, forKey: "type")
+            
+            newMatchScout.setValue(false, forKey: "auto_taxi")
+            newMatchScout.setValue(false, forKey: "teleop_hangar_low")
+            newMatchScout.setValue(false, forKey: "teleop_hangar_mid")
+            newMatchScout.setValue(false, forKey: "teleop_hangar_high")
+            newMatchScout.setValue(true, forKey: "teleop_hangar_traversal")
+            newMatchScout.setValue(false, forKey: "rankingPoints_cargoBonus")
+            newMatchScout.setValue(false, forKey: "rankingPoints_hangarBonus")
+            newMatchScout.setValue(false, forKey: "rankingPoints_tie")
+            newMatchScout.setValue(false, forKey: "rankingPoints_win")
+            newMatchScout.setValue(true, forKey: "rankingPoints_lost")
+            
             matchScoutTemplate.currentMatchScout = newMatchScout
             matchScoutTemplate.saveMatchScout()
             loadMatchScout()
@@ -208,6 +222,10 @@ class TemplatesViewController: UIViewController {
         let request: NSFetchRequest<MatchScout> = MatchScout.fetchRequest()
         let sort = NSSortDescriptor(key: "date", ascending: true)
         request.sortDescriptors = [sort]
+        //Create the component predicates
+        let typePredicate = NSPredicate(format: "type == %i", 1)
+        request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [typePredicate])
+        
         do {
             
             arrMatchScout = try context.fetch(request)
