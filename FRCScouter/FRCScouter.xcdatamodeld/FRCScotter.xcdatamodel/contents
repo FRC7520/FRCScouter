@@ -1,8 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19461" systemVersion="21A559" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="MatchScout" representedClassName=".MatchScout" syncable="YES" codeGenerationType="class">
+        <attribute name="auto_cargo_lower" optional="YES" attributeType="Integer 64" usesScalarValueType="YES"/>
+        <attribute name="auto_cargo_upper" optional="YES" attributeType="Integer 64" usesScalarValueType="YES"/>
+        <attribute name="auto_taxi" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="rankingPoints_cargoBonus" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="rankingPoints_hangarBonus" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="rankingPoints_lost" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="rankingPoints_tie" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="rankingPoints_win" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="scoutInfo" optional="YES" attributeType="String"/>
+        <attribute name="team_no" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="teleop_cargo_lower" optional="YES" attributeType="Integer 64" usesScalarValueType="YES"/>
+        <attribute name="teleop_cargo_upper" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="teleop_hangar_high" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="teleop_hangar_low" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="teleop_hangar_mid" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="teleop_hangar_traversal" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="text" optional="YES" attributeType="String"/>
+        <attribute name="type" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <entity name="Teams" representedClassName=".Teams" syncable="YES" codeGenerationType="class">
         <attribute name="address" optional="YES" attributeType="String"/>
@@ -32,7 +50,7 @@
         </uniquenessConstraints>
     </entity>
     <elements>
-        <element name="MatchScout" positionX="-63" positionY="135" width="128" height="59"/>
+        <element name="MatchScout" positionX="-63" positionY="135" width="128" height="329"/>
         <element name="Teams" positionX="-63" positionY="-18" width="128" height="329"/>
     </elements>
 </model>

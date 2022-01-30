@@ -12,19 +12,41 @@ import CoreData
 class TeamDetailViewController: UIViewController {
     let arrMenu = ["Share", "Team details", "Edit next Scout template", "Move to new window", "Delete scout"]
     var selectedTeam : Teams? = nil
-    
+    var iLoad = false
+    var gIndex = 0         //current record of arrMatchScount
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    var arrMatchScout = [MatchScout]()
+    
+    let matchScoutTemplate = MatchScoutTemplate(nibName: "MatchScoutTemplate", bundle: nil)
+    
+    var scrollVisbleWidth = 0
+   
+    //set iBool is true, load all template when the View Controller is loaded
+    //Set IBool is false, add a new template when Match Scount button is pressed
+    var iBool = false
+    
+    //gCount to judge whether is add or not
+    var gCount = 0
     
     //define viewMenu,viewTop and viewTeamDetail
     @IBOutlet weak var viewMenu: UIView!
     @IBOutlet weak var viewTop: UIView!
     @IBOutlet weak var viewTeamDetail: UIView!
     
+    @IBOutlet weak var menuView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     //define imgLogo
     
+    @IBOutlet weak var scrollView1: UIScrollView!
+    
+    
+    @IBOutlet weak var scrollView2: UIScrollView!
+    
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var imgLogo: UIImageView!
+    
+    @IBOutlet weak var contentView: UIView!
     
     //define text field
     @IBOutlet weak var txtFieldMediaUrl: UITextField!
@@ -101,6 +123,178 @@ class TeamDetailViewController: UIViewController {
         txtFieldAddress.setUnderLine()
         */
         
+        //load Table MatchScout
+        loadMatchScout()
+        
+        let count = arrMatchScout.count
+        
+        // Show all template from Table Match Scout
+        if (count >= 1) {
+            //set iBool is true, load all template when the View Controller is loaded
+            iBool = true
+            
+            self.btnAdd(self)
+        }
+       // scrollView1.isHidden = true
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        if matchScoutTemplate.currentMatchScout != nil {
+            
+            matchScoutTemplate.save()
+            
+            
+        }
+    }
+    
+    @IBAction func btnAdd(_ sender: Any) {
+        for view in menuView.subviews{
+            view.removeFromSuperview()
+        }
+        
+        //show segmentedControl base on Table MatchScout
+        var count = arrMatchScout.count
+
+        // Set IBool is false, add a new template when Match Scount button is pressed
+        if (!iBool){
+            count = count + 1
+        }
+        gCount = count
+        if (gCount == 0) {
+            for view in contentView.subviews{
+                view.removeFromSuperview()
+            }
+        } else {
+        
+        iBool = false
+        
+        var arrItems: [String] = []
+        for index in stride(from: count, through: 1, by: -1) {
+            arrItems.append("Template" + String(index))
+        }
+      
+        let mySegmentedControl = UISegmentedControl (items: arrItems)
+        
+        let xPostion:CGFloat = 0
+        let yPostion:CGFloat = 20
+        let elementWidth:CGFloat = CGFloat(100 * count)
+        let elementHeight:CGFloat = 30
+            
+        mySegmentedControl.frame = CGRect(x: xPostion, y: yPostion, width: elementWidth, height: elementHeight)
+            
+        
+        // Make First segment selected
+        mySegmentedControl.selectedSegmentIndex = 0
+                
+        // Change text color
+        let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        let titleTextAttributes1 = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        
+        
+        mySegmentedControl.setTitleTextAttributes(titleTextAttributes, for: .normal)
+        mySegmentedControl.setTitleTextAttributes(titleTextAttributes1, for: .selected)
+        
+        
+        
+        //Change UISegmentedControl background colour
+        mySegmentedControl.backgroundColor = UIColor.blue
+        
+        
+        // Add function to handle Value Changed events
+        mySegmentedControl.addTarget(self, action: #selector(self.segmentedValueChanged(_:)), for: .valueChanged)
+        
+        self.menuView.addSubview(mySegmentedControl)
+        segmentedValueChanged(mySegmentedControl)
+      //  addView.isHidden = true
+        }
+        
+    }
+    
+    
+    @objc func segmentedValueChanged(_ sender:UISegmentedControl!)
+    {
+        if matchScoutTemplate.currentMatchScout != nil {
+            
+            matchScoutTemplate.save()
+            iLoad = true
+            
+            
+        }
+        
+        //Scoll to current index of SegmentedControl
+        let screenWidth = Int(UIScreen.main.bounds.width)
+        let selSegWidth = (sender.selectedSegmentIndex+2) * 100
+        if  selSegWidth >= screenWidth {
+            let x = selSegWidth
+            scrollVisbleWidth = x
+            scrollView2.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+            let targetRect = CGRect(x: x, y: 20, width: 1, height: 1)
+            scrollView2.scrollRectToVisible(targetRect, animated: true)
+        } else if (scrollVisbleWidth - selSegWidth + 200) > screenWidth {
+            var x = sender.selectedSegmentIndex*100-200
+            if x < 0 {
+                x = 0
+            }
+            let targetRect = CGRect(x: x, y: 20, width: screenWidth+x, height: 1)
+            scrollView2.scrollRectToVisible(targetRect, animated: true)
+        }
+        
+        //Show current Match scout template
+        
+        var  i = 0
+        if gCount > arrMatchScout.count {
+            let newMatchScout = MatchScout(context: self.context)
+            newMatchScout.scoutInfo = "Scout Info"
+            let date = Date()
+            newMatchScout.setValue(date.format(), forKey: "date")
+            let type = 2
+            newMatchScout.setValue(type, forKey: "type")
+            let team_no = selectedTeam?.team_no
+            newMatchScout.setValue(team_no, forKey: "team_no")
+            newMatchScout.setValue(false, forKey: "auto_taxi")
+            newMatchScout.setValue(false, forKey: "teleop_hangar_low")
+            newMatchScout.setValue(false, forKey: "teleop_hangar_mid")
+            newMatchScout.setValue(false, forKey: "teleop_hangar_high")
+            newMatchScout.setValue(true, forKey: "teleop_hangar_traversal")
+            newMatchScout.setValue(false, forKey: "rankingPoints_cargoBonus")
+            newMatchScout.setValue(false, forKey: "rankingPoints_hangarBonus")
+            newMatchScout.setValue(false, forKey: "rankingPoints_tie")
+            newMatchScout.setValue(false, forKey: "rankingPoints_win")
+            newMatchScout.setValue(true, forKey: "rankingPoints_lost")
+            
+            matchScoutTemplate.currentMatchScout = newMatchScout
+            gIndex=0;
+            if iLoad {matchScoutTemplate.viewDidLoad()}
+            
+            matchScoutTemplate.saveMatchScout()
+            loadMatchScout()
+        } else {
+            for index in arrMatchScout{
+               
+                if (i == sender.selectedSegmentIndex) {
+                    gIndex = i
+                    matchScoutTemplate.currentMatchScout = index
+                    print(index.teleop_hangar_traversal)
+                    print(index.rankingPoints_lost)
+                    if iLoad {
+                        matchScoutTemplate.viewDidLoad()
+                        
+                    }
+                    
+//                    matchScoutTemplate.scoutInfoTextField.text = index.scoutInfo ?? "Scout Info"
+/*                    matchScoutTemplate.currentMatchScout?.setValue(matchScoutTemplate.scoutInfoTextField.text, forKey: "scoutInfo")
+                    matchScoutTemplate.saveMatchScout()
+ */
+                    break
+                }
+                i = i+1
+                
+            }
+        }
+        DispatchQueue.main.async  {
+            self.scrollView1.isHidden = false
+            self.contentView.addSubview(self.matchScoutTemplate.view)
+            self.addChild(self.matchScoutTemplate)
+        }
     }
     
     @IBAction func cancelPressed(_ sender: UIButton) {
@@ -151,6 +345,38 @@ class TeamDetailViewController: UIViewController {
         }
         
     }
+    
+    func saveMatchScout(){
+        do {
+            try context.save()
+        } catch {
+            print("Error saving context \(error)")
+        }
+        
+    }
+    
+    func loadMatchScout() {
+        let request: NSFetchRequest<MatchScout> = MatchScout.fetchRequest()
+        let sort = NSSortDescriptor(key: "date", ascending: false)
+        request.sortDescriptors = [sort]
+        
+        //Create the component predicates
+        let typePredicate = NSPredicate(format: "type == %i", 2)
+        
+        if let team_no = selectedTeam?.team_no {
+            let teamNoPredicate = NSPredicate(format: "team_no == %i", team_no)
+            request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [typePredicate, teamNoPredicate])
+        }
+        
+        
+        
+        do {
+            
+            arrMatchScout = try context.fetch(request)
+        } catch {
+            print("Error fetching data from context \(error)")
+        }
+    }
     /*
     // MARK: - Navigation
 
@@ -184,6 +410,7 @@ extension TeamDetailViewController:  UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if arrMenu[indexPath.row] == "Team details" {
+            scrollView1.isHidden = true
             //set team detail's value
             
             txtFieldAddress.text = selectedTeam?.address
@@ -217,6 +444,17 @@ extension TeamDetailViewController:  UITableViewDelegate, UITableViewDataSource 
             }
             */
             
+        } else if arrMenu[indexPath.row] == "Delete scout" {
+            if arrMatchScout.count != 0 {
+                context.delete(arrMatchScout[gIndex])
+                arrMatchScout.remove(at: gIndex)
+                saveMatchScout()
+                iBool = true
+                btnAdd(self)
+                if gIndex == 0 {
+                    iBool = false
+                }
+            }
         }
         viewMenu.isHidden = true
             

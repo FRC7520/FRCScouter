@@ -19,6 +19,7 @@ class TeamsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     var arrTeams = [Teams]()
     
+    
     //floating button
     lazy var faButton: UIButton = {
         let button = UIButton(frame: .zero)
@@ -54,7 +55,11 @@ class TeamsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         //Load data from Teams
         loadTeams()
+        
+        
     }
+    
+    
     
     @IBAction func didTapMenu() {
         present(menu!, animated: true)
@@ -137,20 +142,51 @@ class TeamsViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     newTeams.school_name = teamsItemModel.school_name
                     newTeams.state_prov = teamsItemModel.state_prov
                     newTeams.website = teamsItemModel.website
+                    
+                    // if pd is true that can show image from media url
+                    var pd = false
                     self.getJasonDataOfMediaUrlFromTBA(teamField: "team", teamName: team_number, mediaField: "media", year: "2019"){ result in
                         guard let mediaList = result else { return }
                         
                         for index in 0..<mediaList.count {
                             let direct_url = mediaList[index].direct_url ?? ""
+                            
                             if  !direct_url.isEmpty {
-                                newTeams.mediaUrl = direct_url
-                                break
+                                let url = URL(string: direct_url)
+                                if let _ = try? Data(contentsOf: url!){
+                                    newTeams.mediaUrl = direct_url
+                                    pd = true
+                                    break
+                                }
                             }
                             
                         }
-                        
-                        self.saveTeams()
-                        self.loadTeams()
+                        if pd {
+                            self.saveTeams()
+                            self.loadTeams()
+                        } else {
+                            self.getJasonDataOfMediaUrlFromTBA(teamField: "team", teamName: team_number, mediaField: "media", year: "2018"){ result in
+                                guard let mediaList = result else { return }
+                                
+                                for index in 0..<mediaList.count {
+                                    let direct_url = mediaList[index].direct_url ?? ""
+                                    
+                                    if  !direct_url.isEmpty {
+                                        let url = URL(string: direct_url)
+                                        if let _ = try? Data(contentsOf: url!){
+                                            newTeams.mediaUrl = direct_url
+                                            break
+                                        }
+                                    }
+                                    
+                                }
+                                
+                                self.saveTeams()
+                                self.loadTeams()
+                                
+                            }
+                            
+                        }
                     }
                     
                 }
@@ -192,7 +228,7 @@ class TeamsViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 
             }
                 
-                   // Using parseJSON() function to convert data to Swift struct
+            // Using parseJSON() function to convert data to Swift struct
             let teamsItem = self.parseJSON(data: data)
                 completion(teamsItem)
                    
@@ -288,6 +324,8 @@ class TeamsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             self.tableView.reloadData()
         }
     }
+    
+    
     
     //MARK: - TableView dataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
