@@ -21,7 +21,7 @@ class SettingViewController: UIViewController {
         textViewP.adjustUITextViewHeight()
         textViewMEP.adjustUITextViewHeight()
         // Do any additional setup after loading the view.
-        print("1")
+
     }
     
 
