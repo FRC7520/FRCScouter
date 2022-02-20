@@ -344,16 +344,158 @@
             <objects>
                 <viewController storyboardIdentifier="SettingVC" id="gwj-R0-880" customClass="SettingViewController" customModule="FRCScouter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XQ0-Zt-ODY">
-                        <rect key="frame" x="0.0" y="0.0" width="744" height="1133"/>
+                        <rect key="frame" x="0.0" y="0.0" width="744" height="1100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qu4-Oi-Er1">
+                                <rect key="frame" x="0.0" y="74" width="744" height="1006"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XmE-Fl-i4m">
+                                        <rect key="frame" x="0.0" y="0.0" width="744" height="1000"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About us" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vkX-7U-nnT">
+                                                <rect key="frame" x="0.0" y="20" width="744" height="36"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="V6U-aG-RfB">
+                                                <rect key="frame" x="20" y="66" width="704" height="163"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="163" id="oTb-ry-RBB"/>
+                                                </constraints>
+                                                <string key="text">We are a non-profit community team located in North York composed of devoted students and dedicated mentors from all over GTA. By promoting people to always be imaginative and inventive, to always be active and healthy, and to always be kind and understanding, we are able to pursue our three important axioms: Science, Sports, and Social.</string>
+                                                <color key="textColor" systemColor="labelColor"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="h4Z-Ik-jPj">
+                                                <rect key="frame" x="20" y="249" width="704" height="646.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Our Team" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w5i-cM-0G2">
+                                                        <rect key="frame" x="0.0" y="0.0" width="704" height="24"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yichun Jin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e1E-dO-MWj">
+                                                        <rect key="frame" x="0.0" y="31" width="85" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Program team leader" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uEP-0o-I3z">
+                                                        <rect key="frame" x="0.0" y="58.5" width="159.5" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="d3O-ce-JOJ">
+                                                        <rect key="frame" x="0.0" y="86" width="704" height="128"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="128" id="mdV-90-Cgr"/>
+                                                        </constraints>
+                                                        <string key="text">Jin is a high school student. He is a member of the software engineering team and leads developer for the iOS app for Robot Scouting. He is keen on visual arts, photography, and music. In his free time, he likes to write and design programs and mobile apps.</string>
+                                                        <color key="textColor" systemColor="labelColor"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    </textView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Leo Yin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iFo-9U-mfA">
+                                                        <rect key="frame" x="0.0" y="221" width="59.5" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="M1t-TT-wmO">
+                                                        <rect key="frame" x="0.0" y="248.5" width="704" height="188"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="188" id="AQO-M8-FFD"/>
+                                                        </constraints>
+                                                        <string key="text">Leo Yin is an 11th grade student from St robert chs. He has a wide range of interests and has won several awards in various math competitions while studying and getting certified in baritone and drums. He has also shown great enthusiasm for software development and robotics. He has taught himself blender, python and other tools to help the team optimize the process.</string>
+                                                        <color key="textColor" systemColor="labelColor"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    </textView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YuXuan Pan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cfh-sB-F5g">
+                                                        <rect key="frame" x="0.0" y="443.5" width="97" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mechanical engineering, programmer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KOE-df-dd8">
+                                                        <rect key="frame" x="0.0" y="471" width="284" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="xIT-8b-mDY">
+                                                        <rect key="frame" x="0.0" y="498.5" width="704" height="148"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="148" id="ESQ-gf-Ay3"/>
+                                                        </constraints>
+                                                        <string key="text">Xuan is a builder and programmer for Team Minekee and is in his first year with team Minekee. He is a G11 student at St. Francis Xavier Secondary School. He has been very interested in robots since he was young. When he was in China, he participated in FLL competition twice and some other robot competitions. He is interested in video game production, game art, etc.</string>
+                                                        <color key="textColor" systemColor="labelColor"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    </textView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="w5i-cM-0G2" secondAttribute="trailing" id="Gic-1D-I8c"/>
+                                                    <constraint firstItem="w5i-cM-0G2" firstAttribute="leading" secondItem="h4Z-Ik-jPj" secondAttribute="leading" id="hIE-6E-EYD"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="h4Z-Ik-jPj" firstAttribute="leading" secondItem="XmE-Fl-i4m" secondAttribute="leading" constant="20" id="7uw-WW-Lk6"/>
+                                            <constraint firstItem="vkX-7U-nnT" firstAttribute="leading" secondItem="XmE-Fl-i4m" secondAttribute="leading" id="Axv-Oz-50U"/>
+                                            <constraint firstItem="vkX-7U-nnT" firstAttribute="top" secondItem="XmE-Fl-i4m" secondAttribute="top" constant="20" id="Ez8-Q7-bGk"/>
+                                            <constraint firstAttribute="trailing" secondItem="vkX-7U-nnT" secondAttribute="trailing" id="N1R-Y0-Av3"/>
+                                            <constraint firstAttribute="height" constant="1000" id="N1u-Xu-ozF"/>
+                                            <constraint firstItem="V6U-aG-RfB" firstAttribute="top" secondItem="vkX-7U-nnT" secondAttribute="bottom" constant="10" id="aMz-ZA-uqQ"/>
+                                            <constraint firstItem="h4Z-Ik-jPj" firstAttribute="top" secondItem="V6U-aG-RfB" secondAttribute="bottom" constant="20" id="jm5-2C-FM6"/>
+                                            <constraint firstAttribute="trailing" secondItem="h4Z-Ik-jPj" secondAttribute="trailing" constant="20" id="sEF-11-qBV"/>
+                                            <constraint firstAttribute="trailing" secondItem="V6U-aG-RfB" secondAttribute="trailing" constant="20" id="yEe-fi-R1i"/>
+                                            <constraint firstItem="V6U-aG-RfB" firstAttribute="leading" secondItem="XmE-Fl-i4m" secondAttribute="leading" constant="20" id="ycX-22-sMU"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="XmE-Fl-i4m" firstAttribute="bottom" secondItem="oC5-wH-TDL" secondAttribute="bottom" id="2Ug-Cv-6Rk"/>
+                                    <constraint firstItem="XmE-Fl-i4m" firstAttribute="top" secondItem="oC5-wH-TDL" secondAttribute="top" id="BTP-Vj-yB3"/>
+                                    <constraint firstItem="XmE-Fl-i4m" firstAttribute="trailing" secondItem="oC5-wH-TDL" secondAttribute="trailing" id="rnR-8q-rnT"/>
+                                    <constraint firstItem="XmE-Fl-i4m" firstAttribute="leading" secondItem="oC5-wH-TDL" secondAttribute="leading" id="tWq-LF-JpM"/>
+                                    <constraint firstItem="XmE-Fl-i4m" firstAttribute="width" secondItem="9Yg-Gr-NXI" secondAttribute="width" id="vxW-AK-bYO"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="oC5-wH-TDL"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="9Yg-Gr-NXI"/>
+                            </scrollView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="98j-S9-zjc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="98j-S9-zjc" firstAttribute="trailing" secondItem="qu4-Oi-Er1" secondAttribute="trailing" id="KOI-8d-eA4"/>
+                            <constraint firstItem="qu4-Oi-Er1" firstAttribute="leading" secondItem="98j-S9-zjc" secondAttribute="leading" id="TpW-kL-pU4"/>
+                            <constraint firstItem="qu4-Oi-Er1" firstAttribute="top" secondItem="98j-S9-zjc" secondAttribute="top" id="bbg-8P-ewe"/>
+                            <constraint firstItem="98j-S9-zjc" firstAttribute="bottom" secondItem="qu4-Oi-Er1" secondAttribute="bottom" id="gj3-nG-r8M"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Setting" id="gtw-9O-hVS"/>
+                    <size key="freeformSize" width="744" height="1100"/>
+                    <connections>
+                        <outlet property="textViewAboutUs" destination="V6U-aG-RfB" id="bTA-Ho-n6c"/>
+                        <outlet property="textViewMEP" destination="xIT-8b-mDY" id="K4B-Fb-VW1"/>
+                        <outlet property="textViewP" destination="M1t-TT-wmO" id="IdP-vU-qIk"/>
+                        <outlet property="textViewPTL" destination="d3O-ce-JOJ" id="VhZ-cM-GKd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mwG-2l-yCm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="749.19354838709683" y="1286.5842894969107"/>
+            <point key="canvasLocation" x="749.19354838709683" y="1286.3195057369815"/>
         </scene>
         <!--Team Detail View Controller-->
         <scene sceneID="p1n-TV-JGW">
@@ -764,6 +906,9 @@
         <image name="menu1" width="56" height="56"/>
         <image name="teams" width="18.5" height="18.5"/>
         <image name="templates" width="18" height="18.5"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
